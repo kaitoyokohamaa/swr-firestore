@@ -45,7 +45,7 @@ export type CollectionQueryType<Doc extends object = {}> = {
   orderBy?: OrderByType<Doc>
   where?: WhereType<Doc>
   isCollectionGroup?: boolean
-
+  initialData?:Doc;
   /**
    * For now, this can only be a number, since it has to be JSON serializable.
    *
@@ -85,6 +85,7 @@ export const getCollection = async <Doc extends Document = Document>(
   {
     parseDates,
     ignoreFirestoreDocumentSnapshotField,
+    initialData
   }: {
     parseDates?: (string | keyof Doc)[]
     /**
@@ -92,6 +93,7 @@ export const getCollection = async <Doc extends Document = Document>(
      *
      * Default: `false`
      */
+    initialData?:Doc;
     ignoreFirestoreDocumentSnapshotField?: boolean
   } = empty.object
 ) => {
@@ -318,6 +320,7 @@ export const useCollection = <
      *
      * Default: `true`
      */
+     initialData?:Doc;
     ignoreFirestoreDocumentSnapshotField?: boolean
   } = empty.object,
   options: CollectionSWROptions<Doc> = empty.object
