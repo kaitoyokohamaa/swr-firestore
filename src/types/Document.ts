@@ -5,6 +5,7 @@ export type Document<T = {}> = T & {
   exists?: boolean
   hasPendingWrites?: boolean
   __snapshot?: QueryDocumentSnapshot
+  initialDataa:any
 }
 export type AllowType<O extends object, Allowed> = {
   [K in keyof O]: O[K] | Allowed

@@ -59,7 +59,9 @@ export const getDocument = async <Doc extends Document = Document>(
      * If `false`, it will include a `__snapshot` field. This lets you access the document snapshot, but makes the document not JSON serializable.
      *
      * Default: `true`
-     */
+     */    
+    initialData?: any;
+    
     ignoreFirestoreDocumentSnapshotField?: boolean
   } = empty.object
 ) => {
@@ -280,6 +282,7 @@ export const useDocument = <
       }
       const data = await getDocument<Doc>(path, {
         parseDates: datesToParse.current,
+
         ignoreFirestoreDocumentSnapshotField: shouldIgnoreSnapshot.current,
       })
       return data
