@@ -45,7 +45,7 @@ export type CollectionQueryType<Doc extends object = {}> = {
   orderBy?: OrderByType<Doc>
   where?: WhereType<Doc>
   isCollectionGroup?: boolean
-  initialData?:Doc;
+  initialData?:any;
   /**
    * For now, this can only be a number, since it has to be JSON serializable.
    *
@@ -213,7 +213,7 @@ const createFirestoreRef = <Doc extends object = {}>(
   }
 
 type ListenerReturnType<Doc extends Document = Document> = {
-  initialData: Doc[] | null
+  initialData: any
   unsubscribe: ReturnType<ReturnType<typeof fuego['db']['doc']>['onSnapshot']>
 }
 
@@ -320,7 +320,7 @@ export const useCollection = <
      *
      * Default: `true`
      */
-     initialData?:Doc;
+     initialData?:any;
     ignoreFirestoreDocumentSnapshotField?: boolean
   } = empty.object,
   options: CollectionSWROptions<Doc> = empty.object
