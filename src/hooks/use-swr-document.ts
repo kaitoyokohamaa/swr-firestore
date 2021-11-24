@@ -39,7 +39,7 @@ type Options<Doc extends Document = Document> = {
 } & ConfigInterface<Doc | null>
 
 type ListenerReturnType<Doc extends Document = Document> = {
-  initialData: Doc
+  initialData: any
   unsubscribe: ReturnType<ReturnType<typeof fuego['db']['doc']>['onSnapshot']>
 }
 
